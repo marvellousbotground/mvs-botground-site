@@ -7,11 +7,12 @@
 
 <style>
 *{
+    margin:0;
+    padding:0;
     box-sizing:border-box;
 }
 
 body{
-    margin:0;
     background:#0b0d12;
     color:white;
     font-family:Arial, Helvetica, sans-serif;
@@ -20,62 +21,65 @@ body{
 .hero{
     min-height:100vh;
     display:flex;
-    align-items:center;
     justify-content:center;
+    align-items:center;
     padding:40px 20px;
 }
 
 .card{
-    max-width:1000px;
     width:100%;
-    background:#151923;
-    border-radius:24px;
-    padding:60px;
+    max-width:1000px;
     text-align:center;
-    box-shadow:0 0 35px rgba(0,0,0,.45);
+}
+
+.header{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
 }
 
 .logo{
-    width:160px;
-    height:auto;
-    margin-bottom:20px;
+    width:140px;
+    height:140px;
+    object-fit:contain;
+    margin-bottom:25px;
 }
 
 .badge{
-    display:inline-block;
-    background:#242b3a;
+    background:#1d2740;
     color:#b9c3ff;
-    padding:8px 16px;
+    padding:10px 18px;
     border-radius:999px;
     font-size:14px;
-    margin-bottom:20px;
+    margin-bottom:25px;
 }
 
 h1{
-    font-size:54px;
-    margin:10px 0;
+    font-size:64px;
+    margin-bottom:20px;
 }
 
 .subtitle{
-    color:#b8bcc7;
-    font-size:19px;
-    line-height:1.7;
-    max-width:700px;
-    margin:0 auto 40px auto;
+    max-width:760px;
+    margin:auto;
+    font-size:18px;
+    line-height:1.8;
+    color:#c2c7d1;
 }
 
 .buttons{
-    margin-bottom:45px;
+    margin-top:50px;
+    margin-bottom:60px;
 }
 
 .buttons a{
     display:inline-block;
-    margin:8px;
-    padding:14px 24px;
-    border-radius:10px;
     text-decoration:none;
     color:white;
+    padding:16px 28px;
+    border-radius:12px;
     font-weight:bold;
+    margin:8px;
     transition:.2s;
 }
 
@@ -83,75 +87,66 @@ h1{
     background:#5865F2;
 }
 
-.invite:hover{
-    opacity:.9;
-}
-
 .youtube{
     background:#ff0033;
 }
 
-.youtube:hover{
-    opacity:.9;
-}
-
 .game{
-    background:#2b3242;
+    background:#2d3548;
 }
 
-.game:hover{
-    opacity:.9;
+.buttons a:hover{
+    transform:translateY(-2px);
+    opacity:.95;
 }
 
 .features{
     display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-    gap:18px;
-    margin-top:20px;
+    grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+    gap:20px;
 }
 
 .feature{
-    background:#1e2430;
-    border-radius:14px;
-    padding:24px;
+    background:#161d2b;
+    border-radius:18px;
+    padding:28px;
     text-align:left;
 }
 
 .feature h3{
-    margin-top:0;
-    margin-bottom:10px;
+    margin-bottom:15px;
+    font-size:28px;
 }
 
 .feature p{
-    color:#b8bcc7;
-    line-height:1.6;
-    margin:0;
+    color:#c2c7d1;
+    line-height:1.8;
+    font-size:17px;
 }
 
 .footer{
-    margin-top:40px;
-    color:#8f95a3;
-    font-size:14px;
+    margin-top:50px;
+    color:#a8afbc;
 }
 
 .footer a{
-    color:#b8bcc7;
+    color:white;
     text-decoration:none;
     margin:0 10px;
 }
 
 .footer a:hover{
-    color:white;
+    text-decoration:underline;
 }
 
-@media(max-width:700px){
+.copyright{
+    margin-top:18px;
+}
 
-    .card{
-        padding:35px 25px;
-    }
+@media(max-width:800px){
 
     h1{
-        font-size:38px;
+        font-size:46px;
     }
 
     .subtitle{
@@ -160,8 +155,13 @@ h1{
 
     .buttons a{
         display:block;
-        margin:10px auto;
         max-width:260px;
+        margin:10px auto;
+    }
+
+    .logo{
+        width:120px;
+        height:120px;
     }
 }
 </style>
@@ -172,6 +172,8 @@ h1{
 <div class="hero">
 
 <div class="card">
+
+<div class="header">
 
 <img
 class="logo"
@@ -186,10 +188,11 @@ Official Marvellous BOTground Hub
 <h1>Marvellous BOTground</h1>
 
 <p class="subtitle">
-Marvellous BOTground is a community Discord bot featuring Roblox account
-verification, profile integration, and tools designed for players of
-Marvellous Smackdown.
+Marvellous BOTground is a community Discord bot featuring Roblox account verification,
+profile integration, and tools designed for players of Marvellous Smackdown.
 </p>
+
+</div>
 
 <div class="buttons">
 
@@ -219,21 +222,27 @@ Play Game
 <div class="features">
 
 <div class="feature">
-<h3>🔗 Roblox Verification</h3>
+<h3>🔗</h3>
+<h4>Roblox Verification</h4>
+<br>
 <p>
 Securely link your Roblox account to your Discord profile using Roblox OAuth.
 </p>
 </div>
 
 <div class="feature">
-<h3>👤 Community Profiles</h3>
+<h3>👤</h3>
+<h4>Community Profiles</h4>
+<br>
 <p>
 Create and display Roblox profile information inside the Marvellous BOTground ecosystem.
 </p>
 </div>
 
 <div class="feature">
-<h3>🔒 Privacy First</h3>
+<h3>🔒</h3>
+<h4>Privacy First</h4>
+<br>
 <p>
 We only store the information required for verification and profile linking.
 No passwords or sensitive credentials are ever stored.
@@ -244,19 +253,13 @@ No passwords or sensitive credentials are ever stored.
 
 <div class="footer">
 
-<a href="privacy.html">
-Privacy Policy
-</a>
-
+<a href="privacy.html">Privacy Policy</a>
 •
+<a href="terms.html">Terms of Service</a>
 
-<a href="terms.html">
-Terms of Service
-</a>
-
-<br><br>
-
+<div class="copyright">
 © 2026 Marvellous BOTground
+</div>
 
 </div>
 
