@@ -3,110 +3,64 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Marvellous Verification</title>
-
+<title>Marvellous BOTground</title>
 <style>
-body{
-    margin:0;
-    background:#0f1115;
-    color:white;
-    font-family:Arial, Helvetica, sans-serif;
-}
-
-.container{
-    max-width:900px;
-    margin:80px auto;
-    padding:50px;
-    background:#171a21;
-    border-radius:16px;
-    box-shadow:0 0 25px rgba(0,0,0,.35);
-    text-align:center;
-}
-
-h1{
-    font-size:42px;
-    margin-bottom:15px;
-}
-
-.subtitle{
-    color:#b8bcc7;
-    font-size:18px;
-    margin-bottom:40px;
-}
-
-.card{
-    background:#1f2430;
-    padding:25px;
-    border-radius:12px;
-    margin:25px 0;
-}
-
-.links{
-    margin-top:35px;
-}
-
-.links a{
-    display:inline-block;
-    margin:10px;
-    padding:12px 20px;
-    text-decoration:none;
-    color:white;
-    background:#2d3445;
-    border-radius:8px;
-    transition:.2s;
-}
-
-.links a:hover{
-    background:#394259;
-}
-
-.footer{
-    margin-top:40px;
-    color:#8f95a3;
-    font-size:14px;
-}
+body{margin:0;background:#0b0d12;color:white;font-family:Arial,Helvetica,sans-serif}
+.hero{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:40px}
+.card{max-width:920px;width:100%;background:#151923;border-radius:22px;padding:55px;text-align:center;box-shadow:0 0 35px rgba(0,0,0,.45)}
+.badge{display:inline-block;background:#242b3a;color:#b9c3ff;padding:8px 14px;border-radius:999px;font-size:14px;margin-bottom:20px}
+h1{font-size:52px;margin:10px 0}
+.subtitle{color:#b8bcc7;font-size:19px;line-height:1.6;margin:0 auto 35px;max-width:680px}
+.buttons a{display:inline-block;margin:8px;padding:14px 22px;border-radius:10px;text-decoration:none;color:white;background:#5865f2;font-weight:bold}
+.buttons a.secondary{background:#ff0033}
+.buttons a.dark{background:#2b3242}
+.features{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;margin-top:40px;text-align:left}
+.feature{background:#1e2430;border-radius:14px;padding:22px}
+.feature h3{margin-top:0}
+.feature p{color:#b8bcc7;line-height:1.5}
+.footer{margin-top:38px;color:#8f95a3;font-size:14px}
+.footer a{color:#b8bcc7;text-decoration:none;margin:0 8px}
 </style>
 </head>
-
 <body>
+<div class="hero">
+<div class="card">
+<span class="badge">Official Marvellous BOTground Hub</span>
+<h1>Marvellous BOTground</h1>
+<p class="subtitle">
+A Discord bot and Roblox verification system built for community profiles,
+account linking, ranked features, and secure Roblox OAuth verification.
+</p>
 
-<div class="container">
-
-    <h1>🛡️ Marvellous Verification</h1>
-
-    <p class="subtitle">
-        Official Roblox account verification and profile linking service
-        for Marvellous Bot.
-    </p>
-
-    <div class="card">
-        <h2>Secure Account Linking</h2>
-
-        <p>
-            Marvellous Verification allows users to securely connect their
-            Roblox accounts with Discord profiles using Roblox OAuth.
-        </p>
-    </div>
-
-    <div class="card">
-        <h2>Privacy & Transparency</h2>
-
-        <p>
-            We only collect the information required for account verification
-            and profile linking. No passwords or sensitive credentials are stored.
-        </p>
-    </div>
-
-    <div class="links">
-        <a href="privacy.html">🔒 Privacy Policy</a>
-        <a href="terms.html">📜 Terms of Service</a>
-    </div>
-
-    <div class="footer">
-        © 2026 Marvellous Bot • Roblox Verification System
-    </div>
-
+<div class="buttons">
+<a href="https://discord.com/oauth2/authorize?client_id=1506464369234411580&permissions=8&integration_type=0&scope=bot+applications.commands">Invite Bot</a>
+<a class="secondary" href="https://www.youtube.com/@MarvellousBOTground">YouTube</a>
+<a class="dark" href="https://verify.marvellousbot.win">Verification</a>
 </div>
 
+<div class="features">
+<div class="feature">
+<h3>Roblox Verification</h3>
+<p>Securely link your Roblox account to your Discord profile using Roblox OAuth.</p>
+</div>
+<div class="feature">
+<h3>Community Profiles</h3>
+<p>Create and display profile information for Marvellous BOTground community features.</p>
+</div>
+<div class="feature">
+<h3>Privacy First</h3>
+<p>We only store the data required for verification. No passwords or sensitive credentials are stored.</p>
+</div>
+</div>
+
+<div class="footer">
+<a href="privacy.html">Privacy Policy</a>
+•
+<a href="terms.html">Terms of Service</a>
+<br><br>
+© 2026 Marvellous BOTground
+</div>
+</div>
+</div>
 </body>
 </html>
