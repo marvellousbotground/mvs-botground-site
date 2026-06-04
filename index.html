@@ -3,7 +3,13 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Marvellous BOTground</title>
+
+<link
+rel="icon"
+type="image/png"
+href="https://media.discordapp.net/attachments/1507041233501950142/1509830088106049617/ChatGPT_Image_26_may_2026_08_45_25_p.m..png">
 
 <style>
 *{
@@ -87,6 +93,14 @@ h1{
     background:#5865F2;
 }
 
+.invite-disabled{
+    background:#3a3f4b;
+    color:#9aa0aa !important;
+    cursor:not-allowed;
+    pointer-events:none;
+    opacity:.7;
+}
+
 .youtube{
     background:#ff0033;
 }
@@ -103,6 +117,11 @@ h1{
 .buttons a:hover{
     transform:translateY(-2px);
     opacity:.95;
+}
+
+.invite-disabled:hover{
+    transform:none !important;
+    opacity:.7 !important;
 }
 
 .features{
@@ -183,8 +202,7 @@ h1{
 <img
 class="logo"
 src="https://media.discordapp.net/attachments/1507041233501950142/1509830088106049617/ChatGPT_Image_26_may_2026_08_45_25_p.m..png?ex=6a1a9a58&is=6a1948d8&hm=0ec591475fa05cdb56465a06b7cba5d320ab9b10d1290f34ca1ab6c7033314d3&=&format=webp&quality=lossless"
-alt="Marvellous BOTground Logo"
->
+alt="Marvellous BOTground Logo">
 
 <div class="badge">
 Official Marvellous BOTground Hub
@@ -202,10 +220,8 @@ profile integration, and tools designed for players of Marvellous Smackdown.
 <div class="buttons">
 
 <a
-class="invite"
-href="https://discord.com/oauth2/authorize?client_id=1506464369234411580&permissions=8&integration_type=0&scope=bot+applications.commands"
-target="_blank">
-Invite Bot
+class="invite invite-disabled">
+🔒 Invite Bot (Coming Soon)
 </a>
 
 <a
