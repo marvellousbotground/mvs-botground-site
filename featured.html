@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Featured Characters - MarvellousBOTground</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            color: white;
+            background:
+                radial-gradient(circle at top, rgba(241, 196, 15, 0.22), transparent 35%),
+                linear-gradient(180deg, #171a21 0%, #0f1117 100%);
+            min-height: 100vh;
+        }
+
+        header {
+            padding: 34px 8%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        header a {
+            color: #f1c40f;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .container {
+            width: 84%;
+            margin: 0 auto;
+            padding-bottom: 60px;
+        }
+
+        h1 {
+            font-size: 42px;
+            margin-bottom: 8px;
+        }
+
+        .subtitle {
+            color: #c9c9c9;
+            margin-bottom: 35px;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 22px;
+        }
+
+        .card {
+            position: relative;
+            overflow: hidden;
+            border-radius: 16px;
+            background: #222632;
+            cursor: pointer;
+            aspect-ratio: 1 / 1.25;
+            transition: transform 0.25s ease;
+        }
+
+        .card:hover {
+            transform: scale(1.06);
+        }
+
+        .card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: filter 0.25s ease;
+        }
+
+        .card:hover img {
+            filter: brightness(45%);
+        }
+
+        .overlay {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            font-size: 18px;
+            font-weight: bold;
+            letter-spacing: 1px;
+            transition: opacity 0.25s ease;
+        }
+
+        .card:hover .overlay {
+            opacity: 1;
+        }
+
+        .detail {
+            display: none;
+            background: rgba(20, 23, 31, 0.92);
+            border: 1px solid rgba(241, 196, 15, 0.25);
+            border-radius: 18px;
+            padding: 28px;
+        }
+
+        .hero {
+            display: grid;
+            grid-template-columns: 280px 1fr;
+            gap: 28px;
+            margin-bottom: 30px;
+        }
+
+        .hero img {
+            width: 100%;
+            border-radius: 16px;
+        }
+
+        .tag {
+            color: #f1c40f;
+            font-weight: bold;
+        }
+
+        .section {
+            margin-top: 30px;
+        }
+
+        .attack {
+            background: #1d212b;
+            border-radius: 14px;
+            padding: 18px;
+            margin-bottom: 16px;
+        }
+
+        video {
+            width: 100%;
+            max-width: 520px;
+            margin-top: 12px;
+            border-radius: 12px;
+        }
+
+        .skins {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 18px;
+        }
+
+        .skin img {
+            width: 100%;
+            border-radius: 14px;
+        }
+
+        .back {
+            margin-bottom: 24px;
+            display: inline-block;
+            color: #f1c40f;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        @media (max-width: 1100px) {
+            .grid,
+            .skins {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            .hero {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 650px) {
+            .grid,
+            .skins {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <strong>MarvellousBOTground</strong>
+        <a href="index.html">Home</a>
+    </header>
+
+    <main class="container">
+        <div id="listView">
+            <h1>⭐ Featured Characters</h1>
+            <p class="subtitle">Community customs selected by MarvellousBOTground.</p>
+            <div id="featuredGrid" class="grid"></div>
+        </div>
+
+        <div id="detailView" class="detail">
+            <span class="back" onclick="showList()">← Back to Featured</span>
+            <div id="characterDetail"></div>
+        </div>
+    </main>
+
+    <script>
+        const API = "https://verify.marvellousbot.win/api";
+
+        async function loadFeatured() {
+            const res = await fetch(`${API}/featured`);
+            const characters = await res.json();
+
+            const grid = document.getElementById("featuredGrid");
+
+            grid.innerHTML = characters.map(char => `
+                <div class="card" onclick="loadCharacter('${char.id}')">
+                    <img src="${char.image}" alt="${char.name}">
+                    <div class="overlay">VIEW CHARACTER</div>
+                </div>
+            `).join("");
+        }
+
+        async function loadCharacter(id) {
+            const res = await fetch(`${API}/featured/${id}`);
+            const char = await res.json();
+
+            document.getElementById("listView").style.display = "none";
+            document.getElementById("detailView").style.display = "block";
+
+            const website = char.website || {};
+
+            const attacks = (char.attacks || []).map(attack => {
+                const slot = String(attack.slot || "").toUpperCase();
+                const web = website[slot] || {};
+
+                return `
+                    <div class="attack">
+                        <h3>${slot} - ${attack.name}</h3>
+                        <p><b>Damage:</b> ${attack.damage}</p>
+                        <p><b>Cooldown:</b> ${attack.cooldown}</p>
+                        <p><b>Description:</b> ${web.description || "No description uploaded yet."}</p>
+                        ${
+                            web.video
+                                ? `<video controls src="${web.video}"></video>`
+                                : ""
+                        }
+                    </div>
+                `;
+            }).join("");
+
+            const skins = (char.skins || []).map(skin => `
+                <div class="skin">
+                    <img src="${skin.image}" alt="${skin.name}">
+                    <h4>${skin.name}</h4>
+                    <p>${skin.lore || ""}</p>
+                </div>
+            `).join("");
+
+            document.getElementById("characterDetail").innerHTML = `
+                <div class="hero">
+                    <img src="${char.image}" alt="${char.name}">
+                    <div>
+                        <h1>${char.name}</h1>
+                        <p class="tag">${char.universe || "Unknown Universe"}</p>
+                        <p><b>ID:</b> ${char.id}</p>
+                        <p><b>Likes:</b> ${char.likes || 0}</p>
+                        <p>${char.lore || "No lore available."}</p>
+                    </div>
+                </div>
+
+                <div class="section">
+                    <h2>Stats</h2>
+                    <p><b>HP:</b> ${char.stats?.hp ?? "Unknown"}</p>
+                    <p><b>Speed:</b> ${char.stats?.speed ?? "Unknown"}</p>
+                    <p><b>Damage:</b> ${char.stats?.damage ?? "Unknown"}</p>
+                    <p><b>Skills:</b> ${char.stats?.skills ?? "Unknown"}</p>
+                    <p><b>Can Heal:</b> ${char.stats?.canHeal ? "Yes" : "No"}</p>
+                </div>
+
+                <div class="section">
+                    <h2>Attacks</h2>
+                    ${attacks || "<p>No attacks uploaded.</p>"}
+                </div>
+
+                <div class="section">
+                    <h2>Skins</h2>
+                    <div class="skins">
+                        ${skins || "<p>No skins uploaded.</p>"}
+                    </div>
+                </div>
+            `;
+        }
+
+        function showList() {
+            document.getElementById("detailView").style.display = "none";
+            document.getElementById("listView").style.display = "block";
+        }
+
+        loadFeatured();
+    </script>
+</body>
+</html>
