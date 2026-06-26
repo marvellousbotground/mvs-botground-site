@@ -3,53 +3,115 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Privacy Policy | Marvellous BOTground</title>
 
 <style>
+*{
+    box-sizing:border-box;
+}
+
 body{
     margin:0;
-    background:#0f1115;
+    min-height:100vh;
     color:white;
     font-family:Arial, Helvetica, sans-serif;
+    background:
+        radial-gradient(circle at top, rgba(255, 45, 85, .22), transparent 32%),
+        radial-gradient(circle at bottom right, rgba(255, 0, 60, .12), transparent 30%),
+        linear-gradient(180deg,#171a21 0%,#0b0d12 100%);
+}
+
+.page{
+    max-width:1180px;
+    margin:60px auto;
+    padding:0 25px;
+    display:grid;
+    grid-template-columns:1fr 280px;
+    gap:26px;
+}
+
+.container,
+.sidebar{
+    background:rgba(23,26,33,.94);
+    border:1px solid rgba(255,45,85,.18);
+    border-radius:20px;
+    box-shadow:0 0 28px rgba(0,0,0,.35);
 }
 
 .container{
-    max-width:850px;
-    margin:60px auto;
-    padding:45px;
-    background:#171a21;
-    border-radius:16px;
-    box-shadow:0 0 25px rgba(0,0,0,.35);
+    padding:42px;
+}
+
+.sidebar{
+    height:max-content;
+    position:sticky;
+    top:30px;
+    padding:24px;
+}
+
+.back{
+    display:inline-block;
+    color:#ff4f6d;
+    text-decoration:none;
+    margin-bottom:26px;
+    font-weight:bold;
+}
+
+.back:hover{
+    text-decoration:underline;
 }
 
 h1{
     text-align:center;
-    margin-bottom:10px;
-    font-size:36px;
+    font-size:42px;
+    margin:0 0 10px;
 }
 
 .subtitle{
     text-align:center;
-    color:#b8bcc7;
-    margin-bottom:35px;
+    color:#c2c7d1;
+    margin-bottom:38px;
 }
 
 .section{
-    margin-bottom:32px;
+    background:#1d2230;
+    border:1px solid rgba(255,255,255,.06);
+    border-left:5px solid #ff4f6d;
+    border-radius:18px;
+    padding:28px;
+    margin-bottom:28px;
+    transition:.25s;
+}
+
+.section.active{
+    box-shadow:0 0 24px rgba(255,45,85,.24);
+}
+
+.section:hover{
+    transform:translateY(-3px);
+    border-color:rgba(255,45,85,.32);
 }
 
 h2{
-    margin-bottom:12px;
+    color:#ff4f6d;
+    margin-top:0;
+    margin-bottom:14px;
 }
 
 p{
-    line-height:1.7;
+    line-height:1.75;
     color:#e5e7eb;
 }
 
 ul{
     line-height:1.9;
     color:#e5e7eb;
+    padding-left:22px;
+}
+
+strong{
+    color:white;
 }
 
 .footer{
@@ -58,12 +120,76 @@ ul{
     color:#8f95a3;
     font-size:14px;
 }
+
+.sidebar h3{
+    margin-top:0;
+    text-align:center;
+    margin-bottom:18px;
+}
+
+.sidebar a{
+    display:block;
+    text-decoration:none;
+    color:white;
+    background:#232734;
+    padding:13px 15px;
+    border-radius:12px;
+    margin-bottom:10px;
+    font-weight:bold;
+    transition:.22s;
+}
+
+.sidebar a:hover,
+.sidebar a.active{
+    background:#ff4f6d;
+    color:white;
+    box-shadow:0 0 18px rgba(255,45,85,.48);
+    transform:translateY(-2px);
+}
+
+@media(max-width:900px){
+    .page{
+        grid-template-columns:1fr;
+        margin:30px auto;
+    }
+
+    .sidebar{
+        position:static;
+        order:-1;
+    }
+
+    .container{
+        padding:28px;
+    }
+
+    h1{
+        font-size:34px;
+    }
+}
+
+@media(max-width:600px){
+    .page{
+        padding:0 14px;
+    }
+
+    .container{
+        padding:22px;
+    }
+
+    .section{
+        padding:20px;
+    }
+}
 </style>
 </head>
 
 <body>
 
+<div class="page">
+
 <div class="container">
+
+<a class="back" href="index.html">← Back Home</a>
 
 <h1>🔒 Privacy Policy</h1>
 
@@ -71,11 +197,13 @@ ul{
 Marvellous BOTground Privacy Policy
 </p>
 
-<div class="section">
+<div class="section" id="overview">
+<h2>Overview</h2>
 <p>
 This Privacy Policy explains what information Marvellous BOTground collects,
 why it is collected, and how it is used when you use the Discord bot,
-Roblox verification system, and related community features.
+Roblox verification system, custom character features, profile systems,
+PvP systems, website pages, and related community tools.
 </p>
 
 <p>
@@ -84,44 +212,64 @@ with, endorsed by, or sponsored by Roblox Corporation or Discord Inc.
 </p>
 </div>
 
-<div class="section">
-<h2>What We Collect</h2>
+<div class="section" id="information">
+<h2>Information We Collect</h2>
 
 <p>
-When you verify your Roblox account through Roblox OAuth, we store only the
-information required to link your Roblox account with your Discord profile:
+Marvellous BOTground only stores information required for its bot and website
+features to work.
 </p>
 
 <ul>
-<li>Discord User ID</li>
-<li>Roblox User ID</li>
-<li>Roblox Username</li>
-<li>Verification Status</li>
+<li><strong>Discord data:</strong> Discord User ID, profile settings, custom character ownership, likes, bans, and moderation records.</li>
+<li><strong>Roblox data:</strong> Roblox User ID, Roblox username, display name, and verification status.</li>
+<li><strong>Profile data:</strong> selected profile colors, images, favorite characters, PvP stats, ranks, wins, kills, RP, and similar bot profile information.</li>
+<li><strong>Custom character data:</strong> character names, lore, stats, attacks, attributes, skins, images, videos, descriptions, creator ID, likes, and featured status.</li>
+<li><strong>Website data:</strong> public Featured Character information and public update logs.</li>
 </ul>
-
-<p>
-We do not collect Roblox passwords, Discord passwords, email addresses,
-messages, friends lists, payment information, or private account data.
-</p>
 </div>
 
-<div class="section">
-<h2>Why We Collect It</h2>
+<div class="section" id="not-collected">
+<h2>Information We Do Not Collect</h2>
 
 <p>
-This information is used only for:
+Marvellous BOTground does not collect or store:
 </p>
 
 <ul>
-<li>Linking your Roblox account to your Discord profile.</li>
-<li>Confirming account ownership through Roblox OAuth.</li>
-<li>Providing verification-related Discord bot features.</li>
-<li>Displaying verified Roblox profile information in community features.</li>
+<li>Roblox passwords.</li>
+<li>Discord passwords.</li>
+<li>Payment information.</li>
+<li>Private Discord messages.</li>
+<li>Browser history.</li>
+<li>Email addresses, unless you voluntarily provide one outside the bot.</li>
+<li>Permanent Roblox OAuth access tokens or refresh tokens.</li>
+<li>Information not required for bot features.</li>
 </ul>
 </div>
 
-<div class="section">
-<h2>OAuth, Tokens & Passwords</h2>
+<div class="section" id="usage">
+<h2>How We Use Information</h2>
+
+<p>
+Collected information is used only to operate Marvellous BOTground features,
+including:
+</p>
+
+<ul>
+<li>Linking Roblox accounts to Discord users.</li>
+<li>Displaying verified Roblox profile information.</li>
+<li>Creating and showing Discord bot profiles.</li>
+<li>Running PvP stats, ranks, and leaderboards.</li>
+<li>Creating, editing, liking, moderating, and displaying custom characters.</li>
+<li>Selecting and publishing Featured Characters.</li>
+<li>Showing Featured Characters and update logs on the website.</li>
+<li>Preventing abuse of the custom character system.</li>
+</ul>
+</div>
+
+<div class="section" id="oauth">
+<h2>Roblox OAuth, Tokens & Passwords</h2>
 
 <p>
 Authentication happens on Roblox's official login and authorization pages.
@@ -129,13 +277,66 @@ Marvellous BOTground never sees or stores your Roblox password.
 </p>
 
 <p>
-After authorization, Roblox provides a temporary authorization code which is
-used only to confirm your Roblox identity. We do not permanently store Roblox
-access tokens, refresh tokens, or authentication credentials.
+After authorization, Roblox provides a temporary authorization code used only
+to confirm your Roblox identity. Marvellous BOTground does not permanently
+store Roblox access tokens, refresh tokens, or authentication credentials.
 </p>
 </div>
 
-<div class="section">
+<div class="section" id="customs">
+<h2>Custom Characters</h2>
+
+<p>
+When you create a custom character, the information you submit may become
+visible through bot commands and, if selected as Featured, on the Marvellous
+BOTground website.
+</p>
+
+<p>
+Custom character content may include names, lore, stats, attacks, skins,
+images, videos, descriptions, and creator credit. Featured Characters are
+public community creations.
+</p>
+
+<p>
+Marvellous BOTground may remove, reject, unfeature, or moderate custom
+characters that break server rules, contain inappropriate content, or abuse
+the system.
+</p>
+</div>
+
+<div class="section" id="uploads">
+<h2>Images & Videos</h2>
+
+<p>
+Images uploaded for custom characters and skins may be copied by the bot into
+Discord storage channels so they remain available even if the original upload
+link expires.
+</p>
+
+<p>
+Videos uploaded for Featured Character attack references may also be sent to
+a review channel. These videos are used to review the Featured Character and,
+if approved, may be displayed on the website.
+</p>
+</div>
+
+<div class="section" id="public-api">
+<h2>Website & Public API</h2>
+
+<p>
+Marvellous BOTground provides public API endpoints for website features such as
+Featured Characters and update logs.
+</p>
+
+<p>
+These public endpoints only expose information intended to be public, such as
+Featured Character data, images, lore, attacks, descriptions, videos, likes,
+and update logs.
+</p>
+</div>
+
+<div class="section" id="retention">
 <h2>How Long We Keep Data</h2>
 
 <p>
@@ -144,59 +345,67 @@ Discord profile.
 </p>
 
 <p>
-If you unlink your Roblox account, your stored verification data is permanently
-removed from the verification system.
-</p>
-</div>
-
-<div class="section">
-<h2>Who Can See It</h2>
-
-<p>
-Your linked Roblox verification information may be visible to you through bot
-commands and may be used by Marvellous BOTground systems to provide community
-features.
+Custom character data remains stored while the character exists in the system.
+Featured Character data remains public while the character is published on the
+website.
 </p>
 
 <p>
-Verification data is not sold, rented, or used for advertising.
+Moderation records such as custom creation bans may remain stored while needed
+to prevent abuse.
 </p>
 </div>
 
-<div class="section">
+<div class="section" id="removal">
 <h2>Data Removal</h2>
 
 <p>
-Users may unlink their Roblox account and permanently delete their stored
-verification data at any time through the verification system.
+Users may unlink their Roblox account through the verification system to remove
+stored Roblox verification data.
+</p>
+
+<p>
+Custom characters may be deleted or removed according to the bot's custom
+character systems and moderation rules. If you need help removing your content,
+contact the Marvellous BOTground staff or support server.
 </p>
 </div>
 
-<div class="section">
+<div class="section" id="third-party">
 <h2>Third-Party Services</h2>
 
 <p>
-Marvellous BOTground relies on Roblox OAuth, Discord, Cloudflare, GitHub Pages,
-and hosting providers to operate its verification and community systems.
+Marvellous BOTground relies on third-party services to operate, including:
+</p>
+
+<ul>
+<li>Discord, for bot commands, messages, files, images, videos, and user IDs.</li>
+<li>Roblox OAuth, for account verification.</li>
+<li>Cloudflare, for domain and tunnel services.</li>
+<li>GitHub Pages, for website hosting.</li>
+<li>Bot hosting providers, for running the server.</li>
+</ul>
+
+<p>
 These services are governed by their own privacy policies and terms.
 </p>
 </div>
 
-<div class="section">
+<div class="section" id="security">
 <h2>Security</h2>
 
 <p>
-We take reasonable measures to protect verification data, including using HTTPS,
-OAuth authorization, and server-side storage for verification records.
+We take reasonable measures to protect stored data, including using HTTPS,
+OAuth authorization, and server-side storage for verification and bot records.
 </p>
 
 <p>
-No system is perfectly secure, but we avoid collecting sensitive information
-that is not required for the service.
+No system is perfectly secure, but Marvellous BOTground avoids collecting
+sensitive information that is not required for the service.
 </p>
 </div>
 
-<div class="section">
+<div class="section" id="changes">
 <h2>Changes</h2>
 
 <p>
@@ -206,10 +415,61 @@ date below reflects the latest version.
 </div>
 
 <div class="footer">
-Last updated: May 2026
+Last updated: June 2026
 </div>
 
 </div>
+
+<div class="sidebar">
+<h3>Privacy</h3>
+
+<a href="#overview">Overview</a>
+<a href="#information">Information</a>
+<a href="#not-collected">Not Collected</a>
+<a href="#usage">Usage</a>
+<a href="#oauth">OAuth</a>
+<a href="#customs">Customs</a>
+<a href="#uploads">Uploads</a>
+<a href="#public-api">Website API</a>
+<a href="#retention">Retention</a>
+<a href="#removal">Removal</a>
+<a href="#third-party">Third Parties</a>
+<a href="#security">Security</a>
+<a href="#changes">Changes</a>
+
+</div>
+
+</div>
+
+<script>
+const links = document.querySelectorAll(".sidebar a");
+const sections = document.querySelectorAll(".section");
+
+const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+        if(entry.isIntersecting){
+            links.forEach(link => {
+                link.classList.toggle(
+                    "active",
+                    link.getAttribute("href") === "#" + entry.target.id
+                );
+            });
+
+            sections.forEach(section => {
+                section.classList.toggle(
+                    "active",
+                    section.id === entry.target.id
+                );
+            });
+        }
+    });
+},{
+    root:null,
+    threshold:0.45
+});
+
+sections.forEach(section => observer.observe(section));
+</script>
 
 </body>
 </html>
