@@ -18,6 +18,7 @@
             background:
                 radial-gradient(circle at top, rgba(241, 196, 15, 0.24), transparent 34%),
                 linear-gradient(180deg, #171a21 0%, #10131a 100%);
+            overflow-x: hidden;
         }
 
         header {
@@ -25,6 +26,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
+            gap: 16px;
         }
 
         header strong {
@@ -40,6 +42,7 @@
 
         .container {
             width: 86%;
+            max-width: 1400px;
             margin: 0 auto;
             padding-bottom: 70px;
         }
@@ -99,6 +102,8 @@
             letter-spacing: 1.5px;
             color: white;
             transition: opacity 0.25s ease;
+            text-align: center;
+            padding: 12px;
         }
 
         .card:hover .overlay {
@@ -124,6 +129,7 @@
             border: 1px solid rgba(241, 196, 15, 0.24);
             border-radius: 20px;
             padding: 34px;
+            overflow: hidden;
         }
 
         .separator {
@@ -140,6 +146,7 @@
             margin-top: 0;
             text-transform: uppercase;
             letter-spacing: 2px;
+            overflow-wrap: anywhere;
         }
 
         .hero img {
@@ -154,6 +161,7 @@
             color: #f1c40f;
             font-weight: bold;
             font-size: 18px;
+            overflow-wrap: anywhere;
         }
 
         .stats {
@@ -167,6 +175,7 @@
             background: #202532;
             border-radius: 12px;
             padding: 14px;
+            min-width: 0;
         }
 
         .stat b {
@@ -181,6 +190,7 @@
         .lore {
             line-height: 1.7;
             color: #e3e3e3;
+            overflow-wrap: anywhere;
         }
 
         .attack {
@@ -189,11 +199,13 @@
             padding: 20px;
             margin-bottom: 20px;
             border-left: 4px solid #f1c40f;
+            overflow: hidden;
         }
 
         .attack h3 {
             margin-top: 0;
             font-size: 22px;
+            overflow-wrap: anywhere;
         }
 
         .attack-info {
@@ -207,6 +219,8 @@
             background: #171b25;
             border-radius: 10px;
             padding: 12px;
+            min-height: 82px;
+            min-width: 0;
         }
 
         .info-box b {
@@ -214,14 +228,25 @@
         }
 
         .attributes {
-            font-size: 22px;
-            margin-top: 6px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 7px;
+            margin-top: 8px;
+            align-items: center;
+        }
+
+        .attribute-icon {
+            width: 26px;
+            height: 26px;
+            object-fit: contain;
+            display: inline-block;
         }
 
         .description {
             margin-top: 16px;
             color: #e6e6e6;
             line-height: 1.6;
+            overflow-wrap: anywhere;
         }
 
         video {
@@ -230,18 +255,27 @@
             margin-top: 16px;
             border-radius: 14px;
             display: block;
+            background: #000;
         }
 
         .skins {
             display: grid;
-            grid-template-columns: repeat(5, 1fr);
+            grid-template-columns: repeat(4, 1fr);
             gap: 18px;
+            align-items: start;
         }
 
         .skin {
             background: #202532;
             border-radius: 14px;
             overflow: hidden;
+            cursor: pointer;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .skin:hover {
+            transform: scale(1.04);
+            box-shadow: 0 0 20px rgba(241, 196, 15, 0.18);
         }
 
         .skin img {
@@ -258,6 +292,7 @@
         .skin h4 {
             margin: 0 0 8px;
             color: #f1c40f;
+            overflow-wrap: anywhere;
         }
 
         .skin p {
@@ -265,16 +300,70 @@
             font-size: 14px;
             line-height: 1.5;
             margin: 0;
+            overflow-wrap: anywhere;
         }
 
         .empty {
             color: #bbbbbb;
         }
 
+        .skin-modal {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.78);
+            z-index: 999;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .skin-modal-content {
+            background: #171a21;
+            border: 1px solid rgba(241, 196, 15, 0.45);
+            border-radius: 18px;
+            max-width: 540px;
+            width: 100%;
+            max-height: 90vh;
+            overflow-y: auto;
+            padding: 24px;
+        }
+
+        .skin-modal-content img {
+            width: 100%;
+            max-height: 440px;
+            object-fit: contain;
+            border-radius: 14px;
+            margin-bottom: 16px;
+            background: #0f1117;
+        }
+
+        .skin-modal-content h2 {
+            margin-top: 0;
+            overflow-wrap: anywhere;
+        }
+
+        .skin-modal-content p {
+            line-height: 1.65;
+            color: #e6e6e6;
+            overflow-wrap: anywhere;
+        }
+
+        .close-modal {
+            color: #f1c40f;
+            font-weight: bold;
+            cursor: pointer;
+            display: inline-block;
+            margin-bottom: 14px;
+        }
+
         @media (max-width: 1100px) {
-            .grid,
-            .skins {
+            .grid {
                 grid-template-columns: repeat(3, 1fr);
+            }
+
+            .skins {
+                grid-template-columns: repeat(4, 1fr);
             }
 
             .stats,
@@ -283,10 +372,33 @@
             }
         }
 
-        @media (max-width: 650px) {
-            .grid,
+        @media (max-width: 760px) {
+            header {
+                padding: 22px 5%;
+            }
+
+            .container {
+                width: 94%;
+            }
+
+            h1 {
+                font-size: 30px;
+                line-height: 1.15;
+            }
+
+            .subtitle {
+                font-size: 15px;
+                margin-bottom: 24px;
+            }
+
+            .grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 14px;
+            }
+
             .skins {
                 grid-template-columns: repeat(2, 1fr);
+                gap: 14px;
             }
 
             .stats,
@@ -295,7 +407,69 @@
             }
 
             .character-page {
-                padding: 22px;
+                padding: 18px;
+                border-radius: 16px;
+            }
+
+            .separator {
+                margin: 26px 0;
+            }
+
+            .attack {
+                padding: 16px;
+                border-left-width: 3px;
+            }
+
+            .attack h3 {
+                font-size: 19px;
+            }
+
+            .hero img {
+                width: 220px;
+            }
+
+            video {
+                max-width: 100%;
+            }
+
+            .overlay {
+                opacity: 1;
+                background: rgba(0, 0, 0, 0.18);
+                font-size: 13px;
+            }
+
+            .card:hover {
+                transform: none;
+            }
+
+            .skin-modal {
+                padding: 12px;
+            }
+
+            .skin-modal-content {
+                padding: 18px;
+            }
+        }
+
+        @media (max-width: 420px) {
+            .grid {
+                gap: 10px;
+            }
+
+            .skins {
+                gap: 10px;
+            }
+
+            .skin-content {
+                padding: 10px;
+            }
+
+            .skin p {
+                font-size: 13px;
+            }
+
+            header strong {
+                font-size: 15px;
             }
         }
     </style>
@@ -321,39 +495,48 @@
         </section>
     </main>
 
+    <div id="skinModal" class="skin-modal" onclick="closeSkinModal()">
+        <div class="skin-modal-content" onclick="event.stopPropagation()">
+            <span class="close-modal" onclick="closeSkinModal()">← Close</span>
+            <img id="skinModalImage" src="" alt="">
+            <h2 id="skinModalName"></h2>
+            <p id="skinModalLore"></p>
+        </div>
+    </div>
+
     <script>
         const API = "https://verify.marvellousbot.win/api";
 
         const ATTRIBUTE_EMOJIS = {
-            boost: "<:Boost:1518480719431733456>",
-            lin: "<:Lingering:1517666297104699522>",
-            pull: "<:Pull:1517666295133376562>",
-            use: "<:Charges_use:1517666293052866701>",
-            push: "<:Push:1510718003661111556>",
-            noti: "<:Noticeable:1510718001517822142>",
-            coun: "<:Counter:1510717999458418718>",
-            inv: "<:Vanish:1510717997713719478>",
-            brut: "<:Brutality:1511496907007066262>",
-            bruta: "<:Brutality:1511496907007066262>",
-            area: "<:Area:1510717995914231949>",
-            trans: "<:Transformation:1510717993959559209>",
-            cine: "<:Cinema:1510717991908540466>",
-            rng: "<:Rng:1510717989874307122>",
-            heal: "<:Heal:1510717987794194502>",
-            finish: "<:Finisher:1510717985818673293>",
-            move: "<:Movement:1510717983700422694>",
-            ex: "<:Explode:1510717981510860930>",
-            grab: "<:Grab:1510717979115917454>",
-            mele: "<:Mele:1510717976226300126>",
-            range: "<:Range:1511468297445572618>",
-            lr: "<:RangePlus:1511468293700059417>",
-            lrp: "<:RangePlusPlus:1511468289946161192>",
-            blind: "<:blindness:1511468288318636083>",
-            charge: "<:charge:1511468284921253908>",
-            tp: "<:Teleport:1511468300830376098>",
-            break: "<:Break:1509366823236145162>",
-            ignore: "<:Ignore:1509365768993771570>",
-            block: "<:Block:1509363951874605219>"
+            boost: "1518480719431733456",
+            lin: "1517666297104699522",
+            pull: "1517666295133376562",
+            use: "1517666293052866701",
+            push: "1510718003661111556",
+            noti: "1510718001517822142",
+            coun: "1510717999458418718",
+            inv: "1510717997713719478",
+            brut: "1511496907007066262",
+            bruta: "1511496907007066262",
+            area: "1510717995914231949",
+            trans: "1510717993959559209",
+            cine: "1510717991908540466",
+            rng: "1510717989874307122",
+            heal: "1510717987794194502",
+            finish: "1510717985818673293",
+            move: "1510717983700422694",
+            ex: "1510717981510860930",
+            grab: "1510717979115917454",
+            mele: "1510717976226300126",
+            range: "1511468297445572618",
+            lr: "1511468293700059417",
+            lrp: "1511468289946161192",
+            blind: "1511468288318636083",
+            charge: "1511468284921253908",
+            tp: "1511468300830376098",
+            break: "1509366823236145162",
+            ignore: "1509365768993771570",
+            block: "1509363951874605219"
         };
 
         function normalize(text) {
@@ -369,16 +552,40 @@
                 .replaceAll("'", "&#039;");
         }
 
-        function getAttributes(attributes) {
+        function truncateText(text, max = 95) {
+            const clean = String(text || "");
+
+            if (clean.length <= max) {
+                return escapeHTML(clean);
+            }
+
+            return escapeHTML(clean.slice(0, max).trim()) + "...";
+        }
+
+        function getAttributeIcons(attributes) {
             if (!Array.isArray(attributes) || attributes.length === 0) {
                 return "None";
             }
 
-            const result = attributes
-                .map(attr => ATTRIBUTE_EMOJIS[normalize(attr)] || escapeHTML(attr))
-                .join(" ");
+            const icons = attributes.map(attr => {
+                const key = normalize(attr);
+                const emojiId = ATTRIBUTE_EMOJIS[key];
 
-            return result || "None";
+                if (!emojiId) {
+                    return `<span>${escapeHTML(attr)}</span>`;
+                }
+
+                return `
+                    <img
+                        class="attribute-icon"
+                        src="https://cdn.discordapp.com/emojis/${emojiId}.webp?size=48&quality=lossless"
+                        alt="${escapeHTML(attr)}"
+                        title="${escapeHTML(attr)}"
+                    >
+                `;
+            });
+
+            return icons.join("");
         }
 
         function getSlotIcon(slot) {
@@ -398,6 +605,20 @@
             };
 
             return icons[visible] || visible;
+        }
+
+        function openSkinModal(name, image, lore) {
+            document.getElementById("skinModalImage").src = image || "";
+            document.getElementById("skinModalImage").alt = name || "";
+            document.getElementById("skinModalName").textContent = name || "Unknown Skin";
+            document.getElementById("skinModalLore").textContent = lore || "No lore available.";
+            document.getElementById("skinModal").style.display = "flex";
+            document.body.style.overflow = "hidden";
+        }
+
+        function closeSkinModal() {
+            document.getElementById("skinModal").style.display = "none";
+            document.body.style.overflow = "";
         }
 
         async function loadFeatured() {
@@ -456,7 +677,7 @@
 
                             <div class="info-box">
                                 <b>Attributes</b><br>
-                                <div class="attributes">${getAttributes(attack.attributes)}</div>
+                                <div class="attributes">${getAttributeIcons(attack.attributes)}</div>
                             </div>
                         </div>
 
@@ -474,15 +695,25 @@
                 `;
             }).join("");
 
-            const skins = (char.skins || []).map(skin => `
-                <div class="skin">
-                    <img src="${skin.image}" alt="${escapeHTML(skin.name)}">
-                    <div class="skin-content">
-                        <h4>${escapeHTML(skin.name)}</h4>
-                        <p>${escapeHTML(skin.lore || "")}</p>
+            const skins = (char.skins || []).map(skin => {
+                const skinData = {
+                    name: skin.name || "Unknown Skin",
+                    image: skin.image || "",
+                    lore: skin.lore || "No lore available."
+                };
+
+                const encodedSkin = encodeURIComponent(JSON.stringify(skinData));
+
+                return `
+                    <div class="skin" onclick="openSkinFromEncoded('${encodedSkin}')">
+                        <img src="${escapeHTML(skinData.image)}" alt="${escapeHTML(skinData.name)}">
+                        <div class="skin-content">
+                            <h4>${escapeHTML(skinData.name)}</h4>
+                            <p>${truncateText(skinData.lore)}</p>
+                        </div>
                     </div>
-                </div>
-            `).join("");
+                `;
+            }).join("");
 
             document.getElementById("characterDetail").innerHTML = `
                 <div class="character-page">
@@ -527,6 +758,16 @@
             });
         }
 
+        function openSkinFromEncoded(encodedSkin) {
+            const skin = JSON.parse(decodeURIComponent(encodedSkin));
+
+            openSkinModal(
+                skin.name,
+                skin.image,
+                skin.lore
+            );
+        }
+
         function showList() {
             document.getElementById("detailView").style.display = "none";
             document.getElementById("listView").style.display = "block";
@@ -536,6 +777,12 @@
                 behavior: "smooth"
             });
         }
+
+        document.addEventListener("keydown", event => {
+            if (event.key === "Escape") {
+                closeSkinModal();
+            }
+        });
 
         loadFeatured();
     </script>
