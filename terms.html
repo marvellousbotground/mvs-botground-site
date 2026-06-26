@@ -3,53 +3,115 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Terms of Service | Marvellous BOTground</title>
 
 <style>
+*{
+    box-sizing:border-box;
+}
+
 body{
     margin:0;
-    background:#0f1115;
+    min-height:100vh;
     color:white;
     font-family:Arial, Helvetica, sans-serif;
+    background:
+        radial-gradient(circle at top, rgba(168, 85, 247, .24), transparent 32%),
+        radial-gradient(circle at bottom right, rgba(124, 58, 237, .16), transparent 30%),
+        linear-gradient(180deg,#171a21 0%,#0b0d12 100%);
+}
+
+.page{
+    max-width:1180px;
+    margin:60px auto;
+    padding:0 25px;
+    display:grid;
+    grid-template-columns:1fr 280px;
+    gap:26px;
+}
+
+.container,
+.sidebar{
+    background:rgba(23,26,33,.94);
+    border:1px solid rgba(168,85,247,.18);
+    border-radius:20px;
+    box-shadow:0 0 28px rgba(0,0,0,.35);
 }
 
 .container{
-    max-width:850px;
-    margin:60px auto;
-    padding:45px;
-    background:#171a21;
-    border-radius:16px;
-    box-shadow:0 0 25px rgba(0,0,0,.35);
+    padding:42px;
+}
+
+.sidebar{
+    height:max-content;
+    position:sticky;
+    top:30px;
+    padding:24px;
+}
+
+.back{
+    display:inline-block;
+    color:#c084fc;
+    text-decoration:none;
+    margin-bottom:26px;
+    font-weight:bold;
+}
+
+.back:hover{
+    text-decoration:underline;
 }
 
 h1{
     text-align:center;
-    margin-bottom:10px;
-    font-size:36px;
+    font-size:42px;
+    margin:0 0 10px;
 }
 
 .subtitle{
     text-align:center;
-    color:#b8bcc7;
-    margin-bottom:35px;
+    color:#c2c7d1;
+    margin-bottom:38px;
 }
 
 .section{
-    margin-bottom:32px;
+    background:#1d2230;
+    border:1px solid rgba(255,255,255,.06);
+    border-left:5px solid #c084fc;
+    border-radius:18px;
+    padding:28px;
+    margin-bottom:28px;
+    transition:.25s;
+}
+
+.section.active{
+    box-shadow:0 0 24px rgba(168,85,247,.28);
+}
+
+.section:hover{
+    transform:translateY(-3px);
+    border-color:rgba(168,85,247,.36);
 }
 
 h2{
-    margin-bottom:12px;
+    color:#c084fc;
+    margin-top:0;
+    margin-bottom:14px;
 }
 
 p{
-    line-height:1.7;
+    line-height:1.75;
     color:#e5e7eb;
 }
 
 ul{
     line-height:1.9;
     color:#e5e7eb;
+    padding-left:22px;
+}
+
+strong{
+    color:white;
 }
 
 .footer{
@@ -58,12 +120,76 @@ ul{
     color:#8f95a3;
     font-size:14px;
 }
+
+.sidebar h3{
+    margin-top:0;
+    text-align:center;
+    margin-bottom:18px;
+}
+
+.sidebar a{
+    display:block;
+    text-decoration:none;
+    color:white;
+    background:#232734;
+    padding:13px 15px;
+    border-radius:12px;
+    margin-bottom:10px;
+    font-weight:bold;
+    transition:.22s;
+}
+
+.sidebar a:hover,
+.sidebar a.active{
+    background:#c084fc;
+    color:#12091f;
+    box-shadow:0 0 18px rgba(168,85,247,.55);
+    transform:translateY(-2px);
+}
+
+@media(max-width:900px){
+    .page{
+        grid-template-columns:1fr;
+        margin:30px auto;
+    }
+
+    .sidebar{
+        position:static;
+        order:-1;
+    }
+
+    .container{
+        padding:28px;
+    }
+
+    h1{
+        font-size:34px;
+    }
+}
+
+@media(max-width:600px){
+    .page{
+        padding:0 14px;
+    }
+
+    .container{
+        padding:22px;
+    }
+
+    .section{
+        padding:20px;
+    }
+}
 </style>
 </head>
 
 <body>
 
+<div class="page">
+
 <div class="container">
+
+<a class="back" href="index.html">← Back Home</a>
 
 <h1>📜 Terms of Service</h1>
 
@@ -71,54 +197,196 @@ ul{
 Marvellous BOTground Terms of Service
 </p>
 
-<div class="section">
+<div class="section" id="overview">
+<h2>Overview</h2>
+
 <p>
-These Terms of Service govern the use of Marvellous BOTground, including its Discord bot, Roblox verification system, and related community features.
+These Terms of Service govern the use of Marvellous BOTground, including its
+Discord bot, Roblox verification system, custom character tools, profile
+systems, PvP systems, website pages, public APIs, and related community
+features.
 </p>
 
 <p>
-By using the service, you agree to these Terms.
+By using Marvellous BOTground, you agree to these Terms.
 </p>
 </div>
 
-<div class="section">
+<div class="section" id="about">
 <h2>About the Service</h2>
 
 <p>
-Marvellous BOTground is a community project created for players of Marvellous Smackdown. The service provides Roblox account verification, Discord integration, profile linking, and other community features.
+Marvellous BOTground is a community Discord bot and website created for players
+of Marvellous Smackdown. The service provides character information, Roblox
+account verification, Discord profile integration, PvP profiles, leaderboards,
+custom characters, Featured Characters, update logs, and other community tools.
 </p>
 
 <p>
-We are not affiliated with, endorsed by, or sponsored by Roblox Corporation or Discord Inc.
+Marvellous BOTground is an independent community project and is not affiliated
+with, endorsed by, or sponsored by Roblox Corporation, Discord Inc., or the
+official Marvellous Smackdown development team unless explicitly stated.
 </p>
 </div>
 
-<div class="section">
+<div class="section" id="eligibility">
 <h2>Eligibility</h2>
+
+<p>
+To use Marvellous BOTground, you must:
+</p>
 
 <ul>
 <li>Meet Discord's minimum age requirements.</li>
 <li>Meet Roblox's minimum age requirements.</li>
-<li>Comply with Roblox and Discord Terms of Service.</li>
+<li>Comply with Discord's Terms of Service and Community Guidelines.</li>
+<li>Comply with Roblox's Terms of Use and Community Standards.</li>
+<li>Use the service only in communities where the bot is allowed.</li>
 </ul>
 </div>
 
-<div class="section">
+<div class="section" id="account-linking">
 <h2>Account Linking</h2>
 
 <p>
-Verification creates a link between your Discord account and your Roblox account using Roblox OAuth.
+Roblox verification creates a link between your Discord account and your Roblox
+account using Roblox OAuth.
 </p>
 
 <ul>
-<li>The Roblox account must belong to you.</li>
+<li>The Roblox account you verify must belong to you.</li>
 <li>You may not verify accounts you do not own.</li>
-<li>You may re-verify a different Roblox account at any time.</li>
-<li>You may unlink your Roblox account and delete your verification data at any time through the verification system.</li>
+<li>You may re-verify a different Roblox account if the system allows it.</li>
+<li>You may unlink your Roblox account and remove verification data through the verification system.</li>
+<li>Attempting to abuse, fake, or bypass verification may result in restrictions.</li>
 </ul>
 </div>
 
-<div class="section">
+<div class="section" id="profiles">
+<h2>Profiles, PvP & Leaderboards</h2>
+
+<p>
+Marvellous BOTground may provide profile cards, PvP stats, ranks, RP, wins,
+kills, leaderboard positions, favorite characters, images, colors, and similar
+community profile features.
+</p>
+
+<p>
+You agree not to manipulate, exploit, falsify, spam, or abuse profile,
+leaderboard, or PvP systems. Incorrect, abusive, or manipulated data may be
+reset, hidden, corrected, or removed.
+</p>
+</div>
+
+<div class="section" id="customs">
+<h2>Custom Characters</h2>
+
+<p>
+Users may create custom characters, skins, attacks, lore, attributes,
+descriptions, images, and other character-related content through Marvellous
+BOTground systems.
+</p>
+
+<p>
+By submitting custom character content, you give Marvellous BOTground permission
+to store, display, moderate, edit for formatting, feature, unfeature, publish,
+or remove that content inside the bot and on the Marvellous BOTground website.
+</p>
+
+<p>
+Custom characters must not contain:
+</p>
+
+<ul>
+<li>Sexual or explicit content.</li>
+<li>Harassment, hate, threats, or targeted abuse.</li>
+<li>Malicious links, scams, or unsafe files.</li>
+<li>Content intended to impersonate or deceive users.</li>
+<li>Spam, broken data, or intentionally disruptive content.</li>
+<li>Anything that violates Discord or Roblox rules.</li>
+</ul>
+</div>
+
+<div class="section" id="featured">
+<h2>Featured Characters</h2>
+
+<p>
+Marvellous BOTground may select certain custom characters as Featured
+Characters. Featured Characters may be publicly displayed on the website with
+images, lore, stats, attacks, descriptions, videos, skins, likes, and creator
+credit.
+</p>
+
+<p>
+Being Featured is not guaranteed. Featured status may be removed at any time if
+the character becomes inappropriate, incomplete, outdated, broken, or violates
+these Terms or community rules.
+</p>
+
+<p>
+If your character is selected as Featured, you may receive temporary access to
+submit website descriptions and reference videos. This access may expire or be
+removed once the character is published.
+</p>
+</div>
+
+<div class="section" id="uploads">
+<h2>Images, Videos & Uploaded Content</h2>
+
+<p>
+When you upload images or videos for custom characters, skins, or Featured
+Characters, you confirm that you have the right to submit that content and that
+it does not violate these Terms.
+</p>
+
+<p>
+Uploaded content may be copied or re-hosted by the bot in Discord storage or
+review channels to prevent broken links and to allow moderation review.
+</p>
+
+<p>
+Marvellous BOTground may remove uploaded content that is inappropriate,
+misleading, unsafe, broken, or no longer suitable for the service.
+</p>
+</div>
+
+<div class="section" id="website-api">
+<h2>Website & Public API</h2>
+
+<p>
+Marvellous BOTground may expose public website data through API endpoints used
+to power pages such as Featured Characters and Update Logs.
+</p>
+
+<p>
+Only data intended to be public should be published through these systems. Do
+not submit content to Featured or website systems if you do not want it to be
+publicly visible.
+</p>
+
+<p>
+You may not abuse, scrape aggressively, spam, attack, or overload the public
+API, website, or bot server.
+</p>
+</div>
+
+<div class="section" id="moderation">
+<h2>Moderation & Restrictions</h2>
+
+<p>
+Marvellous BOTground staff or the bot owner may restrict access, remove content,
+delete custom characters, unfeature content, ban users from creating customs,
+or block specific features if abuse, rule violations, or suspicious activity is
+detected.
+</p>
+
+<p>
+Restrictions may be temporary or permanent depending on the severity of the
+violation.
+</p>
+</div>
+
+<div class="section" id="acceptable-use">
 <h2>Acceptable Use</h2>
 
 <p>
@@ -126,55 +394,128 @@ When using Marvellous BOTground, you agree not to:
 </p>
 
 <ul>
-<li>Abuse or interfere with the verification system.</li>
-<li>Attempt to bypass security measures.</li>
+<li>Abuse or interfere with bot systems.</li>
+<li>Attempt to bypass security, bans, cooldowns, or restrictions.</li>
 <li>Impersonate another user.</li>
-<li>Verify Roblox accounts that do not belong to you.</li>
-<li>Use the service in violation of Roblox or Discord policies.</li>
+<li>Use malicious files, links, or attachments.</li>
+<li>Spam commands or intentionally overload the bot.</li>
+<li>Submit inappropriate custom characters, images, videos, or descriptions.</li>
+<li>Use the service in violation of Discord, Roblox, or applicable community rules.</li>
 </ul>
 </div>
 
-<div class="section">
-<h2>Suspension & Termination</h2>
-
-<p>
-We may revoke verification status or restrict access to the service if these Terms are violated, if abuse is detected, or if account ownership cannot be verified.
-</p>
-</div>
-
-<div class="section">
+<div class="section" id="availability">
 <h2>Availability</h2>
 
 <p>
-The service is provided on an "as available" basis. Features may be modified, suspended, or removed at any time without notice.
+Marvellous BOTground is provided on an "as available" basis. Features may be
+changed, suspended, removed, renamed, rewritten, or temporarily unavailable at
+any time.
 </p>
 
 <p>
-We do not guarantee uninterrupted availability or error-free operation.
+We do not guarantee uninterrupted availability, error-free operation, permanent
+hosting of uploaded content, or permanent access to any specific feature.
 </p>
 </div>
 
-<div class="section">
+<div class="section" id="third-party">
 <h2>Third-Party Services</h2>
 
 <p>
-Marvellous BOTground relies on services provided by Roblox, Discord, Cloudflare, GitHub Pages, and other third-party providers. Use of those services is governed by their own terms and policies.
+Marvellous BOTground relies on third-party services including Discord, Roblox
+OAuth, Cloudflare, GitHub Pages, hosting providers, and other infrastructure
+services.
+</p>
+
+<p>
+Use of those services is governed by their own terms, policies, rate limits,
+availability, and restrictions.
 </p>
 </div>
 
-<div class="section">
+<div class="section" id="disclaimer">
 <h2>Disclaimer</h2>
 
 <p>
-Marvellous BOTground is provided "as is" without warranties of any kind. We are not responsible for actions, outages, policy changes, or restrictions imposed by Roblox, Discord, or other third-party services.
+Marvellous BOTground is provided "as is" without warranties of any kind. We are
+not responsible for outages, data loss, policy changes, account restrictions,
+rate limits, or actions imposed by Discord, Roblox, hosting providers, or other
+third-party services.
+</p>
+
+<p>
+Use the bot and website at your own discretion.
+</p>
+</div>
+
+<div class="section" id="changes">
+<h2>Changes</h2>
+
+<p>
+These Terms may be updated as Marvellous BOTground evolves. Continued use of
+the service after changes means you accept the updated Terms.
 </p>
 </div>
 
 <div class="footer">
-Last updated: May 2026
+Last updated: June 2026
 </div>
 
 </div>
+
+<div class="sidebar">
+<h3>Terms</h3>
+
+<a href="#overview">Overview</a>
+<a href="#about">About</a>
+<a href="#eligibility">Eligibility</a>
+<a href="#account-linking">Account Linking</a>
+<a href="#profiles">Profiles & PvP</a>
+<a href="#customs">Customs</a>
+<a href="#featured">Featured</a>
+<a href="#uploads">Uploads</a>
+<a href="#website-api">Website API</a>
+<a href="#moderation">Moderation</a>
+<a href="#acceptable-use">Acceptable Use</a>
+<a href="#availability">Availability</a>
+<a href="#third-party">Third Parties</a>
+<a href="#disclaimer">Disclaimer</a>
+<a href="#changes">Changes</a>
+
+</div>
+
+</div>
+
+<script>
+const links = document.querySelectorAll(".sidebar a");
+const sections = document.querySelectorAll(".section");
+
+const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+        if(entry.isIntersecting){
+            links.forEach(link => {
+                link.classList.toggle(
+                    "active",
+                    link.getAttribute("href") === "#" + entry.target.id
+                );
+            });
+
+            sections.forEach(section => {
+                section.classList.toggle(
+                    "active",
+                    section.id === entry.target.id
+                );
+            });
+        }
+    });
+},{
+    root:null,
+    threshold:0.45
+});
+
+sections.forEach(section => observer.observe(section));
+</script>
 
 </body>
 </html>
