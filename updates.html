@@ -3,112 +3,128 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Update Logs | Marvellous BOTground</title>
 
 <style>
+*{
+    box-sizing:border-box;
+}
+
 body{
     margin:0;
-    background:#0f1115;
+    min-height:100vh;
     color:white;
     font-family:Arial, Helvetica, sans-serif;
+    background:
+        radial-gradient(circle at top, rgba(0,255,136,.18), transparent 32%),
+        radial-gradient(circle at bottom right, rgba(88,101,242,.16), transparent 30%),
+        linear-gradient(180deg,#171a21 0%,#0b0d12 100%);
 }
 
 .page{
-    max-width:1150px;
+    max-width:1180px;
     margin:60px auto;
     padding:0 25px;
     display:grid;
-    grid-template-columns:1fr 260px;
-    gap:25px;
+    grid-template-columns:1fr 280px;
+    gap:26px;
+}
+
+.container,
+.sidebar{
+    background:rgba(23,26,33,.94);
+    border:1px solid rgba(0,255,136,.14);
+    border-radius:20px;
+    box-shadow:0 0 28px rgba(0,0,0,.35);
 }
 
 .container{
-    padding:45px;
-    background:#171a21;
-    border-radius:16px;
-    box-shadow:0 0 25px rgba(0,0,0,.35);
+    padding:42px;
 }
 
 .sidebar{
     height:max-content;
     position:sticky;
     top:30px;
-    padding:25px;
-    background:#171a21;
-    border-radius:16px;
-    box-shadow:0 0 25px rgba(0,0,0,.35);
+    padding:24px;
 }
 
-.sidebar h3{
-    margin-top:0;
-    margin-bottom:18px;
-    text-align:center;
-}
-
-.sidebar a{
-    display:block;
+.back{
+    display:inline-block;
+    color:#00ff88;
     text-decoration:none;
-    color:white;
-    background:#232734;
-    padding:13px 15px;
-    border-radius:10px;
-    margin-bottom:10px;
+    margin-bottom:26px;
     font-weight:bold;
-    transition:.2s;
 }
 
-.sidebar a:hover{
-    background:#c9b38a;
-    color:#1b1b1b;
-    transform:translateY(-2px);
+.back:hover{
+    text-decoration:underline;
 }
 
 h1{
     text-align:center;
-    margin-bottom:10px;
-    font-size:36px;
+    font-size:42px;
+    margin:0 0 10px;
 }
 
 .subtitle{
     text-align:center;
-    color:#b8bcc7;
-    margin-bottom:35px;
+    color:#c2c7d1;
+    margin-bottom:38px;
 }
 
 .update{
-    margin-bottom:38px;
-    padding-bottom:28px;
-    border-bottom:1px solid #2a2f3a;
+    background:#1d2230;
+    border:1px solid rgba(255,255,255,.06);
+    border-left:5px solid #2d3548;
+    border-radius:18px;
+    padding:28px;
+    margin-bottom:28px;
+    transition:.25s;
 }
 
-.update:last-child{
-    border-bottom:none;
-    margin-bottom:0;
+.update.latest{
+    border-left-color:#00ff88;
+    box-shadow:0 0 24px rgba(0,255,136,.22);
+}
+
+.update:hover{
+    transform:translateY(-3px);
+    border-color:rgba(0,255,136,.28);
 }
 
 .version{
-    color:#c9b38a;
-    font-size:24px;
-    font-weight:bold;
+    color:#00ff88;
+    font-size:25px;
+    font-weight:900;
     margin-bottom:6px;
+}
+
+.update-title{
+    font-size:18px;
+    color:white;
+    margin-bottom:8px;
 }
 
 .date{
     color:#8f95a3;
-    margin-bottom:18px;
+    margin-bottom:20px;
 }
 
-h2{
-    margin-bottom:12px;
-}
-
-h3{
+.category{
     margin-top:22px;
-    margin-bottom:10px;
+}
+
+.category h3{
+    margin:0 0 10px;
+    color:#00ff88;
 }
 
 ul{
-    line-height:1.9;
+    margin:0;
+    padding-left:22px;
+    line-height:1.85;
     color:#e5e7eb;
 }
 
@@ -119,25 +135,85 @@ ul{
     font-size:14px;
 }
 
-.back{
-    display:inline-block;
-    color:white;
-    text-decoration:none;
-    margin-bottom:25px;
+.sidebar h3{
+    margin-top:0;
+    text-align:center;
+    margin-bottom:18px;
 }
 
-.back:hover{
-    text-decoration:underline;
+.sidebar a{
+    display:block;
+    text-decoration:none;
+    color:white;
+    background:#232734;
+    padding:13px 15px;
+    border-radius:12px;
+    margin-bottom:10px;
+    font-weight:bold;
+    transition:.22s;
+}
+
+.sidebar a span{
+    display:block;
+    color:#9aa3b8;
+    font-size:12px;
+    margin-top:4px;
+}
+
+.sidebar a:hover,
+.sidebar a.active{
+    background:#00ff88;
+    color:#07110c;
+    box-shadow:0 0 18px rgba(0,255,136,.48);
+    transform:translateY(-2px);
+}
+
+.sidebar a:hover span,
+.sidebar a.active span{
+    color:#07110c;
+}
+
+.empty{
+    color:#c2c7d1;
+    text-align:center;
+    padding:40px 0;
 }
 
 @media(max-width:900px){
     .page{
         grid-template-columns:1fr;
+        margin:30px auto;
     }
 
     .sidebar{
         position:static;
         order:-1;
+    }
+
+    .container{
+        padding:28px;
+    }
+
+    h1{
+        font-size:34px;
+    }
+}
+
+@media(max-width:600px){
+    .page{
+        padding:0 14px;
+    }
+
+    .container{
+        padding:22px;
+    }
+
+    .update{
+        padding:20px;
+    }
+
+    .version{
+        font-size:21px;
     }
 }
 </style>
@@ -157,147 +233,137 @@ ul{
 Marvellous BOTground official update history.
 </p>
 
-<div class="update" id="beta-1-0-4">
-<div class="version">BETA 1.0.4 — Attribute Update</div>
-<div class="date">June 14, 2026</div>
-
-<ul>
-<li>Added Johnny and Sonic character version support.</li>
-<li>Added alternate version data files.</li>
-<li>Added skin-exclusive character variants to Johnny and Sonic .</li>
-<li>Added skin autocomplete with character names.</li>
-<li>Added support for duplicate skin names across different characters.</li>
-<li>Added version character support to edit profile.</li>
-<li>Added profile image support for version skins.</li>
-<li>Added 23 searchable attack attributes.</li>
-<li>Added user-friendly attribute names for search.</li>
-</ul>
-
-<h3>Improved:</h3>
-<ul>
-<li>Improved /search filtering system.</li>
-<li>Improved edit profile skin selection.</li>
-<li>Improved skin image detection.</li>
-<li>Improved profile image synchronization.</li>
-<li>Improved support for alternate character forms.</li>
-<li>Improved autocomplete results.</li>
-</ul>
-
-<h3>Fixed:</h3>
-<ul>
-<li>Fixed duplicate skins selecting the wrong character.</li>
-<li>Fixed profile images using incorrect skins.</li>
-<li>Fixed search requiring ability tags.</li>
-<li>Fixed obsolete ability tag filtering.</li>
-<li>Fixed version skins not being recognized correctly.</li>
-</ul>
+<div id="updatesContainer">
+    <p class="empty">Loading updates...</p>
 </div>
 
-<div class="update" id="beta-1-0-3">
-<div class="version">BETA 1.0.3 — PvP Update</div>
-<div class="date">May 30, 2026</div>
-
-<ul>
-<li>Added PvP stats command.</li>
-<li>Added pvp command with 5 mode options and 5 size options.</li>
-<li>Added casual leaderboard.</li>
-<li>Added ranked leaderboard.</li>
-<li>Added ranked RP system.</li>
-<li>Added rank emojis.</li>
-<li>Added top 3 leaderboard medals.</li>
-<li>Added ranked position to PvP stats.</li>
-<li>Added next rank progress to PvP stats.</li>
-<li>Added custom profile color support in PvP stats.</li>
-<li>Added custom profile image support in PvP stats.</li>
-</ul>
-
-<h3>Improved:</h3>
-<ul>
-<li>Improved ranked display formatting.</li>
-<li>Improved leaderboard visuals.</li>
-<li>Improved PvP profile card design.</li>
-</ul>
-
-<h3>Fixed:</h3>
-<ul>
-<li>Fixed incorrect rank calculations.</li>
-<li>Fixed Bronze II showing as Bronze I.</li>
-<li>Fixed PvP stats not using edit profile colors and images.</li>
-</ul>
-</div>
-
-<div class="update" id="beta-1-0-2">
-<div class="version">BETA 1.0.2 — Verification Update</div>
-<div class="date">May 29, 2026</div>
-
-<ul>
-<li>Roblox OAuth Verification System.</li>
-<li>Roblox Account Linking.</li>
-<li>Re-Verify Button.</li>
-<li>Unlink Roblox Button.</li>
-<li>Marvellous BOTground Website.</li>
-<li>Privacy Policy Page.</li>
-<li>Terms of Service Page.</li>
-<li>Edit profile system.</li>
-<li>Profile system.</li>
-<li>Ranked system.</li>
-</ul>
-
-<h3>Improved:</h3>
-<ul>
-<li>Verification Flow.</li>
-<li>OAuth Security.</li>
-<li>User Profile Integration.</li>
-<li>Website Design and Navigation.</li>
-</ul>
-
-<h3>Fixed:</h3>
-<ul>
-<li>Small bug fixes.</li>
-</ul>
-</div>
-
-<div class="update" id="beta-1-0-1">
-<div class="version">BETA 1.0.1 — Online Systems Update</div>
-<div class="date">May 27, 2026</div>
-
-<ul>
-<li>Bot online 24/7.</li>
-<li>Added skins beta system.</li>
-</ul>
-</div>
-
-<div class="update" id="beta-1-0-0">
-<div class="version">BETA 1.0.0 — Beta Update</div>
-<div class="date">May 23, 2026</div>
-
-<ul>
-<li>Official beta release.</li>
-<li>Search Command.</li>
-<li>Char Command.</li>
-<li>Update Command.</li>
-<li>All Free Characters in Data.</li>
-</ul>
-</div>
-
-<div class="footer">
-Last updated: May 2026
+<div class="footer" id="footer">
+Last updated automatically
 </div>
 
 </div>
 
 <div class="sidebar">
-
 <h3>Updates</h3>
-
-<a href="#beta-1-0-3">BETA 1.0.3</a>
-<a href="#beta-1-0-2">BETA 1.0.2</a>
-<a href="#beta-1-0-1">BETA 1.0.1</a>
-<a href="#beta-1-0-0">BETA 1.0.0</a>
-
+<div id="updateList"></div>
 </div>
 
 </div>
+
+<script>
+const API = "https://verify.marvellousbot.win/api/updates";
+
+function escapeHTML(text){
+    return String(text || "")
+        .replaceAll("&","&amp;")
+        .replaceAll("<","&lt;")
+        .replaceAll(">","&gt;")
+        .replaceAll('"',"&quot;")
+        .replaceAll("'","&#039;");
+}
+
+function makeList(items){
+    if(!Array.isArray(items) || items.length === 0){
+        return "";
+    }
+
+    return `
+        <ul>
+            ${items.map(item => `<li>${escapeHTML(item)}</li>`).join("")}
+        </ul>
+    `;
+}
+
+function renderCategory(title, items){
+    if(!Array.isArray(items) || items.length === 0){
+        return "";
+    }
+
+    return `
+        <div class="category">
+            <h3>${title}</h3>
+            ${makeList(items)}
+        </div>
+    `;
+}
+
+async function loadUpdates(){
+    const container = document.getElementById("updatesContainer");
+    const list = document.getElementById("updateList");
+    const footer = document.getElementById("footer");
+
+    try{
+        const res = await fetch(API);
+        const updates = await res.json();
+
+        if(!Array.isArray(updates) || updates.length === 0){
+            container.innerHTML = `<p class="empty">No updates registered yet.</p>`;
+            list.innerHTML = "";
+            return;
+        }
+
+        container.innerHTML = updates.map((update, index) => `
+            <div
+                class="update ${index === 0 ? "latest" : ""}"
+                id="${escapeHTML(update.id)}"
+            >
+                <div class="version">${escapeHTML(update.version)}</div>
+                <div class="update-title">${escapeHTML(update.title)}</div>
+                <div class="date">${escapeHTML(update.date)}</div>
+
+                ${renderCategory("Added", update.added)}
+                ${renderCategory("Improved", update.improved)}
+                ${renderCategory("Fixed", update.fixed)}
+            </div>
+        `).join("");
+
+        list.innerHTML = updates.map((update, index) => `
+            <a
+                href="#${escapeHTML(update.id)}"
+                data-target="${escapeHTML(update.id)}"
+                class="${index === 0 ? "active" : ""}"
+            >
+                ${escapeHTML(update.version)}
+                <span>${escapeHTML(update.title)}</span>
+            </a>
+        `).join("");
+
+        footer.textContent =
+            `Last updated: ${updates[0].date}`;
+
+        observeActiveUpdates();
+
+    }catch(error){
+        console.error(error);
+        container.innerHTML = `<p class="empty">Failed to load updates.</p>`;
+    }
+}
+
+function observeActiveUpdates(){
+    const links = document.querySelectorAll(".sidebar a");
+    const updates = document.querySelectorAll(".update");
+
+    const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+            if(entry.isIntersecting){
+                links.forEach(link => {
+                    link.classList.toggle(
+                        "active",
+                        link.dataset.target === entry.target.id
+                    );
+                });
+            }
+        });
+    },{
+        root:null,
+        threshold:0.45
+    });
+
+    updates.forEach(update => observer.observe(update));
+}
+
+loadUpdates();
+</script>
 
 </body>
 </html>
